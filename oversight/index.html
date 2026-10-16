@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What 1,946 teacher-reviewed LLM gradings taught me about oversight | Gul Sher Baloch</title>
+<meta name="description" content="A high approval rate is not evidence of oversight until you know the catch rate. Lessons from GradexAI and GulfMedExams, and a plan to measure it.">
+<meta name="author" content="Gul Sher Baloch">
+<link rel="canonical" href="https://gulsherbaloch.com/oversight/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What 1,946 teacher-reviewed LLM gradings taught me about oversight">
+<meta property="og:description" content="An approval rate is not evidence of oversight until you know the catch rate.">
+<meta property="og:url" content="https://gulsherbaloch.com/oversight/">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F3A5F'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' font-weight='700' fill='white' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: research-dossier column (max 1080px). Sticky slim nav; hero with thesis + "at a glance" ledger;
+   evidence charts drawn from real counts; filterable publications; timeline CV. No decorative animation. */
+:root{
+  --bg:#F4F6F9; --surface:#FFFFFF; --sunk:#EAEEF3; --fg:#13202F; --muted:#566273; --line:#D7DDE5;
+  --accent:#1F3A5F; --accent-2:#2F5D8C; --signal:#B4741A; --ok:#2E7D5B; --warn:#B4741A; --risk:#A3473A;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D131B; --surface:#131B25; --sunk:#18222E; --fg:#E4E9F0; --muted:#9AA7B6; --line:#253140;
+    --accent:#9EBEE6; --accent-2:#7FA6D6; --signal:#E3A951; --ok:#5DBB8E; --warn:#E3A951; --risk:#E08473; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D131B; --surface:#131B25; --sunk:#18222E; --fg:#E4E9F0; --muted:#9AA7B6; --line:#253140;
+  --accent:#9EBEE6; --accent-2:#7FA6D6; --signal:#E3A951; --ok:#5DBB8E; --warn:#E3A951; --risk:#E08473; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;margin:0;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 56px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1080px;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;text-wrap:balance;color:var(--fg)}
+p{margin:0}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+
+/* Nav */
+.nav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:9;background:color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line);margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+.nav .in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:16px;min-height:56px}
+.brand{font-family:var(--display);font-size:19px;font-weight:600;color:var(--fg);text-decoration:none;white-space:nowrap}
+.brand span{color:var(--muted);font-weight:400}
+.nav ul{list-style:none;display:flex;gap:4px;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.l{display:block;padding:6px 10px;border-radius:4px;color:var(--muted);text-decoration:none;font-size:14px;white-space:nowrap}
+.nav a.l:hover,.nav a.l[aria-current="true"]{color:var(--fg);background:var(--sunk)}
+.tbtn{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:4px;width:34px;height:34px;cursor:pointer;flex:none;display:grid;place-items:center}
+.tbtn svg{width:16px;height:16px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:48px;padding-block:64px 48px;align-items:start}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--fg);background:var(--surface);border:1px solid var(--line);padding:5px 12px;border-radius:999px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:block}
+.hero h1{font-size:clamp(40px,6.2vw,64px);line-height:1.02;letter-spacing:-.015em;margin-top:22px}
+.hero .role{margin-top:14px;font-size:17px;color:var(--muted);max-width:40em}
+.hero .thesis{margin-top:26px;font-family:var(--display);font-size:clamp(20px,2.3vw,24px);line-height:1.45;max-width:30em}
+.hero .thesis em{font-style:italic;color:var(--accent)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 14px var(--body);padding:10px 16px;border-radius:var(--r);text-decoration:none;border:1px solid var(--line);color:var(--fg);background:var(--surface)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+.glance{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px}
+.glance h2{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.glance dl{margin:14px 0 0;display:grid;grid-template-columns:auto 1fr;gap:12px 16px;align-items:baseline}
+.glance dt{font-family:var(--mono);font-size:24px;font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums;text-align:right}
+.glance dd{margin:0;font-size:14px;color:var(--fg);line-height:1.4}
+.glance .foot{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+/* Sections */
+section.s{padding-block:56px 8px;border-top:1px solid var(--line)}
+.sh{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;margin-bottom:28px}
+.sh h2{font-size:clamp(26px,3vw,34px);line-height:1.15}
+.sh p{color:var(--muted);max-width:62ch;margin-top:8px}
+.body{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px}
+.body > .side{min-width:0}
+.body > .main{min-width:0}
+
+/* Themes */
+.themes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:10px}
+.theme .k{font-family:var(--mono);font-size:12px;color:var(--signal);letter-spacing:.06em}
+.theme h3{font-size:20px;line-height:1.25}
+.theme p{font-size:14.5px;color:var(--muted)}
+.theme .ev{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;color:var(--fg)}
+
+/* Case studies */
+.cases{display:flex;flex-direction:column;gap:20px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px}
+.case > *{min-width:0}
+.case .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.case h3{font-size:24px}
+.pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.pill.live{color:var(--ok)} .pill.paused{color:var(--warn)} .pill.shelved{color:var(--muted)} .pill.award{color:var(--accent-2)}
+.case .what{color:var(--muted);font-size:14.5px;margin-top:4px}
+.qa{margin-top:16px;display:grid;gap:12px}
+.qa div{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px}
+.qa dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.qa dd{margin:0;font-size:15px}
+.viz{background:var(--sunk);border-radius:var(--r);padding:18px 18px 14px;display:flex;flex-direction:column;gap:12px}
+.viz .cap{font-size:13px;color:var(--muted)}
+.viz .big{font-family:var(--mono);font-size:34px;font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1}
+.viz .big small{font-size:14px;color:var(--muted);font-family:var(--body);margin-left:6px}
+.bar{display:flex;height:22px;border-radius:4px;overflow:hidden;background:var(--line)}
+.bar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--fg)}
+.legend b{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.callout{font-size:13.5px;border-left:3px solid var(--signal);padding:6px 0 6px 12px;color:var(--fg)}
+
+/* Proposal */
+.proposal{background:var(--accent);color:var(--bg);border-radius:var(--r);padding:32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+.proposal > *{min-width:0}
+.proposal .label{color:color-mix(in srgb, var(--bg) 75%, transparent)}
+.proposal h3{color:var(--bg);font-size:clamp(24px,3vw,32px);line-height:1.2;margin-top:10px}
+.proposal p{margin-top:12px;color:color-mix(in srgb, var(--bg) 88%, transparent);max-width:46ch}
+.proposal ol{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:14px}
+.proposal li{counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;font-size:15px}
+.proposal li::before{content:counter(s);font-family:var(--mono);font-size:13px;width:26px;height:26px;border-radius:50%;border:1px solid color-mix(in srgb, var(--bg) 60%, transparent);display:grid;place-items:center}
+.proposal li b{display:block;font-weight:600}
+
+/* Publications */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{font:500 13px var(--body);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.chip .c{font-family:var(--mono);font-size:11.5px;opacity:.75;margin-left:4px}
+.pubs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.pubs li{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:16px;padding-block:16px;border-bottom:1px solid var(--line);align-items:baseline}
+.pubs li > *{min-width:0}
+.pubs .yr{font-family:var(--mono);font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.pubs .t{font-family:var(--display);font-size:18.5px;line-height:1.35}
+.pubs .v{font-size:14px;color:var(--muted);margin-top:3px}
+.pubs .me{color:var(--fg);font-weight:600}
+.pubs .acts{display:flex;gap:8px;white-space:nowrap}
+.tag{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:3px;background:var(--sunk);color:var(--muted);text-decoration:none}
+a.tag{color:var(--accent)}
+.pubs li[hidden]{display:none}
+
+/* Timeline */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl li{position:relative;padding:0 0 26px 32px}
+.tl li::before{content:"";position:absolute;left:2px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.tl .when{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tl h3{font-family:var(--body);font-size:16.5px;font-weight:600;margin-top:2px}
+.tl .org{color:var(--muted);font-size:15px}
+.tl ul{margin:8px 0 0;padding-left:18px;font-size:15px}
+.tl ul li{padding:0;margin:3px 0}
+.tl ul li::before{display:none}
+.side-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;font-size:14px}
+.side-card + .side-card{margin-top:14px}
+.side-card h3{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.side-card ul{margin:0;padding-left:16px}
+.side-card li{margin:4px 0}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.skills div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.skills h3{font-family:var(--body);font-size:15px;font-weight:600}
+.skills p{font-size:14px;color:var(--muted);margin-top:6px}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.contact > *{min-width:0}
+.email{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.email code{font-family:var(--mono);font-size:16px;user-select:all;background:var(--surface);border:1px solid var(--line);padding:8px 12px;border-radius:4px}
+.links{display:grid;gap:8px;font-size:15px}
+.links a{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:4px;text-decoration:none;color:var(--fg)}
+.links a span{color:var(--muted);font-family:var(--mono);font-size:12.5px}
+.links a:hover{border-color:var(--accent)}
+.auth{margin-top:16px;font-size:14px;color:var(--muted);max-width:56ch}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:32px;padding-block:40px 32px}
+  .sh,.body{grid-template-columns:1fr;gap:12px}
+  .themes,.skills{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr;gap:20px;padding:20px}
+  .proposal{grid-template-columns:1fr;padding:24px}
+  .contact{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .brand span{display:none}
+  .qa div{grid-template-columns:1fr;gap:2px}
+  .pubs li{grid-template-columns:1fr;gap:4px}
+}
+
+.essay{max-width:700px;margin:0 auto;padding-block:56px 24px}
+.essay h1{font-size:clamp(32px,5vw,46px);line-height:1.1;letter-spacing:-.01em;margin-top:14px}
+.essay .dek{font-family:var(--display);font-size:21px;line-height:1.45;color:var(--muted);margin-top:18px}
+.essay .byline{font-size:14px;color:var(--muted);margin-top:18px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.essay h2{font-size:25px;margin-top:40px;margin-bottom:12px}
+.essay p{font-size:17.5px;line-height:1.7;margin-top:14px}
+.essay ul,.essay ol{font-size:17.5px;line-height:1.65;padding-left:1.3em;margin:14px 0 0}
+.essay li{margin-top:8px}
+.essay p.label{font-size:12px;margin-top:0}
+.essay em{font-style:italic;color:var(--accent)}
+.essay .end{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-size:16px;color:var(--muted)}
+.essay-foot{max-width:700px;margin:24px auto 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="in">
+    <a class="brand" href="/">Gul Sher Baloch<span>, PhD</span></a>
+    <ul>
+      <li><a class="l" href="/#research">Research</a></li>
+      <li><a class="l" href="/#work">Work</a></li>
+      <li><a class="l" href="/#proposal">Proposal</a></li>
+      <li><a class="l" href="/#publications">Publications</a></li>
+      <li><a class="l" href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="essay">
+  <p class="label">Essay &middot; October 2026</p>
+  <h1>What 1,946 teacher-reviewed LLM gradings taught me about oversight</h1>
+  <p class="dek">A high approval rate looked like success. It turned out to be a number I could not interpret, and the reason is a small version of one of the central problems in AI safety.</p>
+  <p class="byline">Gul Sher Baloch &middot; about 7 minutes</p>
+
+  <h2>The number that looked like success</h2>
+  <p>In 2025 my team at Leaveit2AI launched GradexAI, a tool that creates exams with an LLM and grades students' answers against LLM-generated rubrics, with teachers reviewing the AI grades. Seventeen institutes and 1,516 users piloted it. Over 270 exams and 1,464 student submissions, the system produced 1,946 AI gradings, and teachers approved 91.7% of them.</p>
+  <p>At the time, I read 91.7% as evidence that the grading worked. Teachers are the experts; if they accepted nine in ten grades, the model must be right about nine times in ten.</p>
+  <p>That reading was wrong, or at least unsupported. An approval rate can only tell you how often the reviewer agreed with the model. It cannot tell you why.</p>
+
+  <h2>Two worlds with the same dashboard</h2>
+  <p>Imagine two versions of GradexAI that both show 91.7% approval.</p>
+  <ul>
+    <li>In the first, the model is wrong on about 8% of answers and teachers catch nearly all of those mistakes. Oversight is working.</li>
+    <li>In the second, the model is wrong on 20% of answers, but teachers, busy and faced with a fluent rationale, catch fewer than half. Many wrong grades are approved and reach students.</li>
+  </ul>
+  <p>Both worlds produce the same number. To tell them apart you need something we never had: answers where you already know the grade is wrong, slipped into the review queue on purpose. Without planted errors, the catch rate is unknown, and the approval rate measures agreement, not oversight.</p>
+  <p>The open-source <a href="https://github.com/Gulsher9931/llm-grading-oversight">simulation in my evaluation code</a> makes the point concretely: a simulated reviewer who flags almost nothing produces a near-perfect approval rate and a catch rate close to zero.</p>
+
+  <h2>The same pattern, one level up</h2>
+  <p>My second product, GulfMedExams, prepares doctors for Gulf medical licensing exams. Here I made a deliberate choice: no AI-generated questions and no user-facing chatbot. LLMs work behind the scenes, restructuring, quality-scanning and tagging 6,946 doctor-verified questions, and deduplicating them with embeddings. The reason was simple. One confident hallucination shown to a doctor would cost us credibility we could not win back.</p>
+  <p>But we did put a model in an oversight role. A scheduled AI resolver reviews the error reports users submit about questions. Of 316 reports, it closed 93% automatically: 189 by fixing the question and 105 by ruling that the question was correct as written.</p>
+  <p>Those 105 rulings are the GradexAI problem turned around. Now the model is the reviewer, and users are the ones being overruled. Was the model right each time, or was it defending existing content against a user who had found a real mistake? The resolver's closure rate looks excellent. It cannot answer that question on its own either.</p>
+
+  <h2>Why this is a safety problem, not a product problem</h2>
+  <p>Scalable oversight asks how humans can supervise AI systems that are as capable as they are, or more capable, in the domain at hand. A teacher reviewing an AI grade is a small, everyday instance: the model writes the rationale, the human checks it, and the human's attention is limited.</p>
+  <p>Anthropic's recent <a href="https://www.anthropic.com/news/automated-alignment-researchers">Automated Alignment Researchers</a> study shows the same tension at the frontier. Claude agents pushed weak-to-strong supervision far beyond the human baseline, yet the gains transferred unevenly across domains and the agents tried to game their setup. A high score was not, by itself, proof that supervision had worked. That is the lesson GradexAI taught me at a much smaller scale.</p>
+  <p>My research background points at the same question from another side. My PhD was about separating signal from noise in images. My most recent paper, in <i>IEEE Access</i> (2025), proposes a deep learning framework that stays robust when training labels are wrong, and in 2023 I built an <a href="https://www.educative.io/courses/deal-with-mislabeled-and-imbalanced-machine-learning-datasets">online course on mislabelled and imbalanced datasets</a>. A reviewer who approves a wrong grade is producing exactly that kind of noisy label. If the same reviews are later used as feedback to train or evaluate models, the noise compounds.</p>
+
+  <h2>What I want to measure</h2>
+  <p>The fix is not complicated, which is part of why I find it compelling. Grading is an unusually good testbed for oversight because the ground truth can be controlled.</p>
+  <ol>
+    <li><b>Plant errors of known type and size</b> into LLM-graded short answers: over-credit, under-credit, and correct scores with rationales that claim rubric points the answer does not meet.</li>
+    <li><b>Measure catch rate</b> for human reviewers and for weaker models acting as reviewers, alongside the false-flag rate on correct grades.</li>
+    <li><b>Test interventions</b> that might raise catch rate: showing the rubric beside the grade, adding a model-written critique, or showing two models debating the grade.</li>
+    <li><b>Report the gap</b> between approval rate, which is what dashboards show, and catch rate, which is what oversight actually achieves.</li>
+  </ol>
+  <p>I have published a <a href="https://github.com/Gulsher9931/llm-grading-oversight">research plan and starter tooling</a> for this. It is a design, not a result: the example data is synthetic, and the only reviewers it has met so far are simulated ones.</p>
+
+  <h2>What I would do differently</h2>
+  <p>If I were launching GradexAI again, I would plant a small number of known-wrong grades in every teacher's queue from the first week. It would cost almost nothing, and it would have turned a reassuring but uninterpretable 91.7% into a measurement. I would do the same for the GulfMedExams resolver: periodically route a sample of its "correct as written" rulings to a doctor, blind to the model's verdict.</p>
+  <p>The general lesson is one I now apply everywhere I put a human or a model in a reviewing role: <em>an approval rate is not evidence of oversight until you know the catch rate.</em></p>
+
+  <p class="end">If you work on scalable oversight or evaluation and want to compare notes, I would be glad to hear from you: <a href="/#contact">contact details</a>.</p>
+</main>
+
+<footer class="essay-foot"><a href="/">&larr; gulsherbaloch.com</a><span>Gul Sher Baloch, PhD</span></footer>
+
+</body>
+</html>
