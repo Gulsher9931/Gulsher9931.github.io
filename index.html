@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gul Sher Baloch, PhD</title>
+<meta name="description" content="Applied ML researcher working on human oversight and reliability of LLM systems. PhD in image processing; Associate Professor, Sukkur IBA University; Co-founder & CEO, Leaveit2AI LLC.">
+<meta name="author" content="Gul Sher Baloch">
+<link rel="canonical" href="https://gulsher9931.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Gul Sher Baloch, PhD">
+<meta property="og:description" content="Applied ML researcher working on human oversight and reliability of LLM systems.">
+<meta property="og:url" content="https://gulsher9931.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F3A5F'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' font-weight='700' fill='white' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Gul Sher Baloch","honorificSuffix":"PhD","jobTitle":"Associate Professor","affiliation":"Sukkur IBA University","email":"mailto:gulsher9931@gmail.com","url":"https://gulsher9931.github.io/","sameAs":["https://scholar.google.com/citations?user=OaFQukcAAAAJ","https://www.linkedin.com/in/gs-baloch/","https://github.com/Gulsher9931","https://leaveit2ai.com"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow reading column; a denoising canvas in the hero echoes the PhD work; work items as a measured ledger, not cards */
+:root{
+  --bg:#F6F8FA; --surface:#FFFFFF; --fg:#16212E; --muted:#5A6676; --line:#D9DFE7;
+  --accent:#1F3A5F; --signal:#B7791F;
+  --display:"Spectral", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E141B; --surface:#141C25; --fg:#E3E8EF; --muted:#9AA6B5; --line:#26313D;
+    --accent:#9DBCE3; --signal:#E2A64B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E141B; --surface:#141C25; --fg:#E3E8EF; --muted:#9AA6B5; --line:#26313D;
+  --accent:#9DBCE3; --signal:#E2A64B; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:0 48px}
+.wrap{max-width:760px;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;color:var(--fg)}
+p{margin:0}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* Header */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:24px 0}
+.top nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}
+.top nav a:hover{color:var(--fg)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 168px;gap:32px;align-items:end;padding-block:56px 40px;border-bottom:1px solid var(--line)}
+.hero > div{min-width:0}
+.hero h1{font-size:clamp(38px,6vw,56px);line-height:1.05;letter-spacing:-.01em}
+.hero .role{margin-top:14px;font-size:18px;color:var(--muted)}
+.hero .thesis{margin-top:22px;font-family:var(--display);font-size:21px;line-height:1.5;max-width:34em}
+.hero .thesis em{color:var(--accent);font-style:italic}
+.links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:26px;font-size:15px}
+figure.denoise{margin:0;display:flex;flex-direction:column;gap:8px}
+figure.denoise canvas{width:168px;height:168px;max-width:100%;border:1px solid var(--line);background:var(--surface);image-rendering:pixelated}
+figure.denoise figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.4}
+
+/* Sections */
+section{padding-block:44px 8px}
+section > h2{font-size:28px;margin-top:6px;margin-bottom:18px}
+.lede{color:var(--fg);max-width:65ch}
+.lede + .lede{margin-top:14px}
+
+/* Interests */
+.interests{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;padding:0;list-style:none}
+.interests li{font-size:14px;border:1px solid var(--line);padding:4px 10px;border-radius:999px;color:var(--fg);background:var(--surface)}
+
+/* Ledger of work */
+.ledger{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ledger > li{display:grid;grid-template-columns:150px 1fr;gap:20px;padding-block:22px;border-bottom:1px solid var(--line)}
+.ledger > li > *{min-width:0}
+.ledger h3{font-size:20px}
+.ledger .what{color:var(--muted);font-size:14px;margin-top:2px}
+.ledger p.body{margin-top:10px;max-width:62ch}
+.figures{display:flex;flex-direction:column;gap:12px}
+.fig b{display:block;font-family:var(--mono);font-size:22px;font-weight:500;color:var(--accent);line-height:1.15;font-variant-numeric:tabular-nums}
+.fig span{display:block;font-size:12px;color:var(--muted);line-height:1.35}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);border:1px solid currentColor;padding:1px 6px;border-radius:3px;margin-left:8px;vertical-align:3px}
+.lesson{margin-top:10px;font-size:14px;color:var(--muted);max-width:62ch}
+.lesson strong{color:var(--fg);font-weight:600}
+
+/* Question block */
+.question{background:var(--surface);border:1px solid var(--line);padding:24px;margin-top:6px}
+.question p.q{font-family:var(--display);font-size:22px;line-height:1.4}
+.question ol{margin:16px 0 0;padding-left:1.2em;max-width:62ch}
+.question li{margin-top:6px}
+
+/* Publications */
+.pubs{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
+.pubs li{display:grid;grid-template-columns:52px 1fr;gap:14px}
+.pubs li > *{min-width:0}
+.pubs .yr{font-family:var(--mono);font-size:14px;color:var(--muted);padding-top:2px}
+.pubs .t{font-family:var(--display);font-size:17px;line-height:1.4}
+.pubs .v{font-size:14px;color:var(--muted)}
+.pubs .me{color:var(--fg);font-weight:600}
+
+/* Timeline */
+.cv{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
+.cv li{display:grid;grid-template-columns:120px 1fr;gap:16px}
+.cv li > *{min-width:0}
+.cv .when{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.cv .what{font-weight:600}
+.cv .where{color:var(--muted);font-size:15px}
+
+/* Contact */
+.contact{display:flex;flex-direction:column;gap:12px}
+.email{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.email code{font-family:var(--mono);font-size:16px;user-select:all;background:var(--surface);border:1px solid var(--line);padding:6px 10px}
+button.copy{font:500 14px var(--body);color:var(--bg);background:var(--accent);border:0;padding:8px 14px;cursor:pointer;border-radius:3px}
+button.copy:hover{filter:brightness(1.08)}
+.auth{font-size:14px;color:var(--muted);max-width:65ch}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+@media (max-width:640px){
+  .hero{grid-template-columns:1fr;padding-block:36px 32px}
+  figure.denoise{flex-direction:row;align-items:center;gap:14px}
+  figure.denoise canvas{width:96px;height:96px}
+  .ledger > li{grid-template-columns:1fr;gap:14px}
+  .figures{flex-direction:row;flex-wrap:wrap;gap:12px 24px}
+  .cv li{grid-template-columns:1fr;gap:2px}
+}
+@media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto} }
+</style>
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="label">Gul Sher Baloch, PhD</span>
+    <nav aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#work">Work</a>
+      <a href="#publications">Publications</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Gul Sher Baloch</h1>
+      <p class="role">Applied ML researcher · Associate Professor, Sukkur IBA University · Co-founder &amp; CEO, Leaveit2AI LLC</p>
+      <p class="thesis">My PhD was about recovering clean signals from noisy ones. For the last two years I have built LLM systems where a wrong output costs a real person, and I keep asking the same question: <em>how do humans tell when the model is wrong?</em></p>
+      <div class="links">
+        <a href="https://scholar.google.com/citations?user=OaFQukcAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/gs-baloch/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Gulsher9931" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://leaveit2ai.com" target="_blank" rel="noopener">leaveit2ai.com</a>
+        <a href="https://www.gulfmedexams.com" target="_blank" rel="noopener">gulfmedexams.com</a>
+      </div>
+    </div>
+    <figure class="denoise" aria-hidden="true">
+      <canvas id="denoise" width="56" height="56"></canvas>
+      <figcaption>noisy → recovered<br>σ = <span id="sigma" class="mono">0.00</span></figcaption>
+    </figure>
+  </div>
+
+  <section id="research">
+    <span class="label">Research focus</span>
+    <h2>Oversight and reliability of LLM systems</h2>
+    <p class="lede">I trained in image processing and applied deep learning: sparse representations for image denoising and super-resolution, biomedical signal and image analysis, and, most recently, deep learning that stays robust when training labels are wrong. I have 15+ peer-reviewed papers and 380+ citations, including work in <i>IEEE Signal Processing Letters</i> and <i>IEEE Access</i>.</p>
+    <p class="lede">Since 2024 I have run LLMs in production for teachers and doctors. Those systems taught me that the hard part is rarely getting an answer from the model. The hard part is knowing when to trust it, and designing the human review around that. That is the empirical AI safety work I want to do next.</p>
+    <ul class="interests">
+      <li>Scalable oversight</li>
+      <li>Human review of LLM judgments</li>
+      <li>LLM evaluation in high-stakes domains</li>
+      <li>Sycophancy under expert pushback</li>
+      <li>Robustness to label noise</li>
+      <li>Distribution shift</li>
+    </ul>
+  </section>
+
+  <section id="work">
+    <span class="label">Selected work</span>
+    <h2>What I have built, and what it showed</h2>
+    <ul class="ledger">
+      <li>
+        <div class="figures">
+          <div class="fig"><b>1,946</b><span>LLM gradings reviewed by teachers</span></div>
+          <div class="fig"><b>91.7%</b><span>of AI grades approved</span></div>
+        </div>
+        <div>
+          <h3>GradexAI <span class="tag">Paused</span></h3>
+          <p class="what">LLM exam creation and grading, with a teacher reviewing every grade</p>
+          <p class="body">I designed LLM-generated rubrics, OCR for handwritten scripts and outcome analytics. Seventeen institutes and 1,516 users piloted it: 270 exams, 1,464 student submissions, 1,946 AI gradings.</p>
+          <p class="lesson"><strong>Open question it left me with:</strong> teachers approved 91.7% of AI grades, but we never measured how many of those approvals were wrong. Whether reviewers catch model errors, or quietly defer to them, is the question I most want to study.</p>
+        </div>
+      </li>
+      <li>
+        <div class="figures">
+          <div class="fig"><b>6,946</b><span>doctor-verified MCQs in the pipeline</span></div>
+          <div class="fig"><b>93%</b><span>of 316 error reports resolved automatically</span></div>
+        </div>
+        <div>
+          <h3>GulfMedExams <span class="tag">Live</span></h3>
+          <p class="what">Gulf medical licensing exam preparation for doctors</p>
+          <p class="body">LLMs restructure, quality-scan and tag recalled questions by topic and subspecialty. A two-stage deduplication step (OpenAI models plus embeddings) builds a high-yield "Repeat Vault". A scheduled AI resolver handles user error reports (189 fixed, 105 dismissed as correct).</p>
+          <p class="lesson"><strong>A deliberate safety trade-off:</strong> we kept AI internal, with no AI-generated questions and no user-facing chat, because one hallucination would cost credibility with doctors. The platform earned $12K+ in under 4 months, with 265 paid users in 40 countries; 39 of 40 surveyed users reported passing their exam.</p>
+        </div>
+      </li>
+      <li>
+        <div class="figures">
+          <div class="fig"><b>0</b><span>answers generated live by an LLM</span></div>
+        </div>
+        <div>
+          <h3>AI Maths Tutor <span class="tag">Shelved</span></h3>
+          <p class="what">O-Level maths prototype</p>
+          <p class="body">Worked solutions were loaded and checked in advance instead of generated live. A student clicks the step they are stuck on and a chatbot explains that step. We shelved it before launch to focus our 4-person team on GulfMedExams.</p>
+        </div>
+      </li>
+      <li>
+        <div class="figures">
+          <div class="fig"><b>1st</b><span>prize, DICE Innovation competition</span></div>
+        </div>
+        <div>
+          <h3>Agronomist</h3>
+          <p class="what">Student AI flower-identification app I product-led as faculty mentor</p>
+          <p class="body">A model trained on clean photos fails in the field, so I had the team collect images on different phones and resolutions, from different angles, at different times of day and in different weather. It won first prize and a place in the university's startup incubator.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="question">
+    <span class="label">A project I would start with</span>
+    <h2>Do overseers catch wrong LLM grades?</h2>
+    <div class="question">
+      <p class="q">When a capable model grades work and a human approves it, how often is the approval a rubber stamp?</p>
+      <ol>
+        <li>Plant known errors in LLM-graded short answers, using public or synthetic student work.</li>
+        <li>Measure catch rates for human reviewers and for weaker models acting as reviewers.</li>
+        <li>Test interventions: showing the rubric, a model-written critique, or two models debating the grade.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="publications">
+    <span class="label">Selected publications</span>
+    <h2>Papers</h2>
+    <ul class="pubs">
+      <li><span class="yr">2025</span><div><p class="t">A robust deep learning framework for mitigating label noise with dual selective attention</p><p class="v">Hyder, <span class="me">Baloch</span>, Batool, Kim &amp; Byun · <i>IEEE Access</i></p></div></li>
+      <li><span class="yr">2021</span><div><p class="t">Classification of alcoholic EEG signals using wavelet scattering transform-based features</p><p class="v">Buriro, Ahmed, <span class="me">Baloch</span>, et al. · <i>Computers in Biology and Medicine</i> 139</p></div></li>
+      <li><span class="yr">2019</span><div><p class="t">Impact of image enhancement technique on CNN model for retinal blood vessels segmentation</p><p class="v">Soomro, <span class="me">Baloch</span>, et al. · <i>IEEE Access</i> 7</p></div></li>
+      <li><span class="yr">2018</span><div><p class="t">Residual correlation regularization based image denoising</p><p class="v"><span class="me">Baloch</span>, Ozkaramanli &amp; Yu · <i>IEEE Signal Processing Letters</i> 25(2)</p></div></li>
+      <li><span class="yr">2017</span><div><p class="t">Image denoising via correlation-based sparse representation</p><p class="v"><span class="me">Baloch</span> &amp; Ozkaramanli · <i>Signal, Image and Video Processing</i> 11(8)</p></div></li>
+    </ul>
+    <p class="lede" style="margin-top:18px;font-size:15px">Full list on <a href="https://scholar.google.com/citations?user=OaFQukcAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+  </section>
+
+  <section id="cv">
+    <span class="label">Experience &amp; education</span>
+    <h2>CV in brief</h2>
+    <ul class="cv">
+      <li><span class="when">2024 – now</span><div><p class="what">Co-founder &amp; CEO, Leaveit2AI LLC (USA)</p><p class="where">Lead a 4-person team that tested five AI products, bootstrapped for 2 years; now funded by GulfMedExams revenue.</p></div></li>
+      <li><span class="when">2011 – now</span><div><p class="what">Associate Professor &amp; Program Coordinator, Sukkur IBA University</p><p class="where">Lecturer 2011, Assistant Professor 2018, Associate Professor 2021. Supervised 30+ applied AI/ML projects; taught AI, Machine Learning, Deep Learning, Python and Data Science; PI on HEC and NGIRI research grants; HEC-approved PhD supervisor; reviewer for IEEE TIP and IEEE Access.</p></div></li>
+      <li><span class="when">2019 – 2021</span><div><p class="what">Founder &amp; Lead Coordinator, AI for Schools, with ReadyAI (USA)</p><p class="where">Ran what ReadyAI called Pakistan's first K-12 AI teacher training; WAICY Country Organizer for Pakistan.</p></div></li>
+      <li><span class="when">2014 – 2018</span><div><p class="what">PhD, Image Processing, Eastern Mediterranean University, Cyprus</p><p class="where">Research assistantship after a 4.00 GPA first semester; Certificate of Research Achievement with Distinction.</p></div></li>
+      <li><span class="when">2019</span><div><p class="what">MIT CSAIL Professional Certification, Machine Learning &amp; AI</p><p class="where">Also: Deep Learning Specialization, deeplearning.ai (2020); IEEE Senior Member.</p></div></li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <span class="label">Contact</span>
+    <h2>Get in touch</h2>
+    <div class="contact">
+      <div class="email">
+        <code id="email">gulsher9931@gmail.com</code>
+        <button class="copy" id="copyBtn" type="button">Copy email</button>
+        <span id="copied" class="label" role="status" aria-live="polite"></span>
+      </div>
+      <p class="auth">Based in Pakistan, relocating to Houston, TX. US work authorization: EB-2 NIW green card, immigrant visa interview completed, issuance pending. No employer sponsorship required.</p>
+    </div>
+  </section>
+
+  <footer>Gul Sher Baloch, PhD · Updated October 2026</footer>
+</div>
+
+<script>
+(function(){
+  // Copy email
+  var btn=document.getElementById('copyBtn'), out=document.getElementById('copied'), em=document.getElementById('email');
+  btn.addEventListener('click',function(){
+    var text=em.textContent;
+    function selectIt(){var r=document.createRange();r.selectNodeContents(em);var s=window.getSelection();s.removeAllRanges();s.addRange(r);out.textContent='Selected, press Ctrl+C';}
+    try{
+      navigator.clipboard.writeText(text).then(function(){out.textContent='Copied';},selectIt);
+    }catch(e){selectIt();}
+  });
+
+  // Denoising canvas: a sine-ring pattern whose additive noise decays, then loops
+  var c=document.getElementById('denoise'); if(!c) return;
+  var ctx=c.getContext('2d'), W=c.width, H=c.height, sig=document.getElementById('sigma');
+  var img=ctx.createImageData(W,H), clean=new Float32Array(W*H);
+  for(var y=0;y<H;y++)for(var x=0;x<W;x++){
+    var dx=x-W/2+.5, dy=y-H/2+.5, r=Math.sqrt(dx*dx+dy*dy);
+    clean[y*W+x]=0.5+0.5*Math.cos(r*0.55)*Math.exp(-r/40);
+  }
+  function rgb(name){var v=getComputedStyle(document.documentElement).getPropertyValue(name).trim();var m=v.match(/^#([0-9a-f]{6})$/i);if(!m)return[31,58,95];var n=parseInt(m[1],16);return[n>>16&255,n>>8&255,n&255];}
+  var A,B;
+  function colors(){A=rgb('--surface');B=rgb('--accent');}
+  colors();
+  try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){colors();draw(current);});}catch(e){}
+  new MutationObserver(function(){colors();draw(current);}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  var current=0;
+  function draw(sigma){
+    current=sigma;
+    for(var i=0;i<W*H;i++){
+      var v=clean[i]+(sigma>0?(Math.random()*2-1)*sigma:0); v=v<0?0:v>1?1:v;
+      img.data[i*4]=A[0]+(B[0]-A[0])*v; img.data[i*4+1]=A[1]+(B[1]-A[1])*v; img.data[i*4+2]=A[2]+(B[2]-A[2])*v; img.data[i*4+3]=255;
+    }
+    ctx.putImageData(img,0,0); if(sig) sig.textContent=sigma.toFixed(2);
+  }
+  var reduce=false; try{reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  if(reduce){draw(0);return;}
+  var t0=null, period=7000;
+  function frame(ts){
+    if(t0===null)t0=ts;
+    var p=((ts-t0)%period)/period;           // 0..1
+    var s=p<0.15?0.9:p<0.75?0.9*Math.pow(1-(p-0.15)/0.6,2):0; // hold noisy, decay, hold clean
+    draw(s); requestAnimationFrame(frame);
+  }
+  draw(0);
+  requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>
