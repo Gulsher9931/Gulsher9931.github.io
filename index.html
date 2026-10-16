@@ -137,6 +137,7 @@ section.s{padding-block:56px 8px;border-top:1px solid var(--line)}
 .proposal li{counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;font-size:15px}
 .proposal li::before{content:counter(s);font-family:var(--mono);font-size:13px;width:26px;height:26px;border-radius:50%;border:1px solid color-mix(in srgb, var(--bg) 60%, transparent);display:grid;place-items:center}
 .proposal li b{display:block;font-weight:600}
+.proposal .plinks a{color:var(--bg);font-weight:500}
 
 /* Publications */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
@@ -293,7 +294,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
       <article class="case">
         <div>
           <div class="top"><h3>GradexAI</h3><span class="pill paused">Paused</span></div>
-          <p class="what">LLM exam creation and grading, with a teacher reviewing every grade</p>
+          <p class="what">LLM exam creation and grading, with teacher review of AI grades</p>
           <dl class="qa">
             <div><dt>Built</dt><dd>LLM-generated rubrics, OCR for handwritten scripts, and outcome analytics for accreditation reports.</dd></div>
             <div><dt>Reach</dt><dd><span class="num">17</span> institutes, <span class="num">1,516</span> users, <span class="num">270</span> exams, <span class="num">1,464</span> student submissions.</dd></div>
@@ -359,6 +360,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
         <span class="label">A project I would start with</span>
         <h3>Do overseers catch wrong LLM grades?</h3>
         <p>When a capable model grades work and a human approves it, how often is the approval a rubber stamp? GradexAI gave me the setting; this project would give it a measurement.</p>
+        <p class="plinks"><a href="/oversight/">Read the essay</a> &middot; <a href="https://github.com/Gulsher9931/llm-grading-oversight" target="_blank" rel="noopener">Research plan &amp; code on GitHub</a></p>
       </div>
       <ol>
         <li><span><b>Plant known errors</b>Seed LLM-graded short answers with errors of graded difficulty, using public or synthetic student work.</span></li>
